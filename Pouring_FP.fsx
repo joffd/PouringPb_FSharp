@@ -72,7 +72,8 @@ module Solver =
         | Empty(g) -> newArray (g, 0) status
         | Pour(g1, g2) ->
             let amount = min (status.[g1]) (data.Capacity.[g2] - status.[g2])
-            newArray (g1, status.[g1] - amount) status
+            status
+            |> newArray (g1, status.[g1] - amount)
             |> newArray (g2, status.[g2] + amount)
 
 
